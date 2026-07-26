@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deuna! | Dashboard Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deuna-yellow: #FFD200;
+            --deuna-blue: #002D72;
+            --deuna-dark: #1A1A1A;
+            --white: #FFFFFF;
+            --success: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--deuna-yellow);
+            color: var(--deuna-blue);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--deuna-blue);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 5px 15px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Main Card */
+        .balance-card {
+            background: var(--deuna-blue);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 45, 114, 0.2);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .balance-card::after {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 210, 0, 0.1);
+            border-radius: 50%;
+        }
+
+        .balance-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .balance-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-title {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* Transactions List */
+        .transactions {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .transactions h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .transaction-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .transaction-item:last-child {
+            border-bottom: none;
+        }
+
+        .trans-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .trans-icon {
+            width: 40px;
+            height: 40px;
+            background: #f0f4ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .trans-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .trans-date {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .trans-amount {
+            font-weight: 700;
+        }
+
+        .amount-neg { color: #e74c3c; }
+        .amount-pos { color: var(--success); }
+
+        /* Button */
+        .btn-refresh {
+            background: var(--deuna-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .btn-refresh:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">deuna<span style="color: white;">!</span></div>
+            <div class="user-profile">
+                <span>Hola, <strong>Ecuador</strong> 🇪🇨</span>
+            </div>
+        </header>
+
+        <section class="balance-card">
+            <p class="balance-label">Tu saldo disponible</p>
+            <div class="balance-amount" id="main-balance">$ 0.00</div>
+            <p style="font-size: 0.8rem; opacity: 0.8;">Cuentas conectadas: Banco Pichincha</p>
+        </section>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <p class="stat-title">Ingresos del mes</p>
+                <p class="stat-value" id="income-val" style="color: var(--success);">$0.00</p>
+            </div>
+            <div class="stat-card">
+                <p class="stat-title">Gastos realizados</p>
+                <p class="stat-value" id="expense-val" style="color: #e74c3c;">$0.00</p>
+            </div>
+            <div class="stat-card">
+                <p class="stat-title">Contactos Deuna!</p>
+                <p class="stat-value">42</p>
+            </div>
+        </div>
+
+        <section class="transactions">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3>Movimientos recientes</h3>
+                <button class="btn-refresh" onclick="generateData()">Actualizar</button>
+            </div>
+            <div id="transactions-list">
+                </div>
+        </section>
+    </div>
+
+    <script>
+        const names = ["Juan Pérez", "Tienda de Doña Mary", "Gasolinera Terpel", "María García", "Netflix", "Supermaxi", "Carlos Vaca", "Farmacias Fybeca"];
+        const categories = ["Transferencia", "Compra", "Servicio", "Transferencia", "Suscripción", "Compra", "Transferencia", "Salud"];
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+        }
+
+        function generateData() {
+            // Saldo Sintético
+            const balance = (Math.random() * 1500 + 100).toFixed(2);
+            document.getElementById('main-balance').innerText = formatCurrency(balance);
+
+            const income = (Math.random() * 800 + 200).toFixed(2);
+            const expense = (Math.random() * 400 + 50).toFixed(2);
+            
+            document.getElementById('income-val').innerText = `+${formatCurrency(income)}`;
+            document.getElementById('expense-val').innerText = `-${formatCurrency(expense)}`;
+
+            // Lista de Transacciones
+            const list = document.getElementById('transactions-list');
+            list.innerHTML = ""; // Limpiar
+
+            for (let i = 0; i < 5; i++) {
+                const isNegative = Math.random() > 0.4;
+                const amount = (Math.random() * 50 + 2).toFixed(2);
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                const randomCat = categories[Math.floor(Math.random() * categories.length)];
+                
+                const item = document.createElement('div');
+                item.className = 'transaction-item';
+                item.innerHTML = `
+                    <div class="trans-info">
+                        <div class="trans-icon">${randomName.charAt(0)}</div>
+                        <div>
+                            <p class="trans-name">${randomName}</p>
+                            <p class="trans-date">${randomCat} • Hoy</p>
+                        </div>
+                    </div>
+                    <div class="trans-amount ${isNegative ? 'amount-neg' : 'amount-pos'}">
+                        ${isNegative ? '-' : '+'}${formatCurrency(amount)}
+                    </div>
+                `;
+                list.appendChild(item);
+            }
+        }
+
+        // Ejecutar al cargar
+        window.onload = generateData;
+    </script>
+</body>

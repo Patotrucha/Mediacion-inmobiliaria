@@ -16,7 +16,7 @@
                 extend: {
                     colors: {
                         brand: {
-                            black: '#0a0c10',
+                            black: '#0a0c1',
                             dark: '#0f172a',
                             navy: '#131c31',
                             gold: '#d4af37',
@@ -389,5 +389,374 @@
             menu.classList.toggle('hidden');
         });
     </script>
+<!-- =========================================================
+     PERSONALIZACIÓN VISUAL PAOLA MUÑOZ
+     Pegar inmediatamente antes de </body>
+========================================================== -->
+
+<style id="pm-identidad-visual">
+
+    /* TIPOGRAFÍA */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+    /* PALETA DE COLORES DEL LOGO */
+    :root {
+        --pm-azul: #07142e;
+        --pm-azul-secundario: #1d2b43;
+        --pm-dorado: #c18122;
+        --pm-dorado-claro: #d9b36f;
+        --pm-dorado-oscuro: #9f5908;
+        --pm-marfil: #f7f4ee;
+        --pm-blanco: #ffffff;
+        --pm-gris: #667085;
+        --pm-borde: rgba(193, 129, 34, 0.32);
+    }
+
+    /* TIPOGRAFÍA GENERAL */
+    html,
+    body,
+    .font-sans,
+    .font-serif {
+        font-family: 'Montserrat', sans-serif !important;
+    }
+
+    body {
+        background-color: var(--pm-blanco) !important;
+        color: var(--pm-azul-secundario) !important;
+    }
+
+    /* TÍTULOS */
+    h1,
+    h2,
+    h3 {
+        color: var(--pm-azul) !important;
+        font-family: 'Montserrat', sans-serif !important;
+        font-weight: 400 !important;
+        letter-spacing: 0.055em;
+    }
+
+    #inicio h1 {
+        text-transform: uppercase;
+        letter-spacing: 0.085em;
+        line-height: 1.18;
+    }
+
+    /* TEXTOS */
+    p,
+    li,
+    label {
+        color: var(--pm-azul-secundario) !important;
+    }
+
+    .text-white,
+    .text-gray-300,
+    .text-gray-400,
+    .text-gray-500,
+    .text-gray-600 {
+        color: var(--pm-azul-secundario) !important;
+    }
+
+    /* ENCABEZADO */
+    header {
+        background: rgba(255, 255, 255, 0.96) !important;
+        border-bottom: 1px solid var(--pm-borde) !important;
+        box-shadow: 0 8px 30px rgba(7, 20, 46, 0.05);
+    }
+
+    header nav a,
+    #mobile-menu a {
+        color: var(--pm-azul) !important;
+    }
+
+    header nav a:hover,
+    #mobile-menu a:hover {
+        color: var(--pm-dorado) !important;
+    }
+
+    #mobile-menu {
+        background: var(--pm-blanco) !important;
+        border-color: var(--pm-borde) !important;
+    }
+
+    /* PORTADA */
+    #inicio {
+        min-height: auto !important;
+        padding-top: 4rem !important;
+        padding-bottom: 6rem !important;
+        background: linear-gradient(
+            180deg,
+            var(--pm-blanco) 0%,
+            var(--pm-marfil) 100%
+        ) !important;
+    }
+
+    /* SECCIONES */
+    #sobre-mi,
+    #contacto,
+    footer {
+        background: var(--pm-blanco) !important;
+        border-color: rgba(7, 20, 46, 0.09) !important;
+    }
+
+    #servicios {
+        background: linear-gradient(
+            180deg,
+            var(--pm-blanco) 0%,
+            var(--pm-marfil) 50%,
+            var(--pm-blanco) 100%
+        ) !important;
+    }
+
+    /* DORADO */
+    .text-brand-gold {
+        color: var(--pm-dorado) !important;
+    }
+
+    .text-gold-gradient {
+        background: none !important;
+        color: var(--pm-azul) !important;
+        -webkit-text-fill-color: var(--pm-azul) !important;
+    }
+
+    [class*="border-brand-gold"] {
+        border-color: var(--pm-borde) !important;
+    }
+
+    /* TARJETAS */
+    .border-gold-glow {
+        border: 1px solid var(--pm-borde) !important;
+        background: var(--pm-blanco) !important;
+        box-shadow: 0 16px 42px rgba(7, 20, 46, 0.07);
+    }
+
+    .border-gold-glow:hover {
+        border-color: rgba(193, 129, 34, 0.72) !important;
+        box-shadow:
+            0 18px 48px rgba(7, 20, 46, 0.10),
+            0 0 24px rgba(193, 129, 34, 0.09) !important;
+    }
+
+    .bg-brand-navy,
+    .bg-brand-navy\/40,
+    .bg-brand-navy\/60,
+    .bg-brand-black\/60 {
+        background: var(--pm-blanco) !important;
+    }
+
+    #sobre-mi .border-gold-glow {
+        background: var(--pm-marfil) !important;
+    }
+
+    /* ETIQUETA SUPERIOR */
+    #inicio .inline-block.rounded-full {
+        color: var(--pm-dorado) !important;
+        background: rgba(193, 129, 34, 0.06) !important;
+        border-color: var(--pm-borde) !important;
+    }
+
+    /* BOTONES PRINCIPALES */
+    a.bg-gradient-to-r,
+    button.bg-gradient-to-r {
+        background: linear-gradient(
+            135deg,
+            var(--pm-dorado-claro) 0%,
+            var(--pm-dorado) 55%,
+            var(--pm-dorado-oscuro) 100%
+        ) !important;
+
+        color: var(--pm-azul) !important;
+
+        box-shadow:
+            0 12px 28px rgba(159, 89, 8, 0.18) !important;
+    }
+
+    a.bg-gradient-to-r:hover,
+    button.bg-gradient-to-r:hover {
+        filter: brightness(1.04);
+        transform: translateY(-1px);
+    }
+
+    /* BOTÓN DEL ENCABEZADO */
+    header a[href="#contacto"] {
+        border-color: var(--pm-dorado) !important;
+        color: var(--pm-dorado) !important;
+    }
+
+    header a[href="#contacto"]:hover {
+        background: var(--pm-dorado) !important;
+        color: var(--pm-blanco) !important;
+    }
+
+    /* FORMULARIO */
+    input,
+    select,
+    textarea {
+        background: var(--pm-blanco) !important;
+        border-color: rgba(7, 20, 46, 0.16) !important;
+        color: var(--pm-azul) !important;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--pm-dorado) !important;
+        box-shadow:
+            0 0 0 3px rgba(193, 129, 34, 0.10);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: var(--pm-gris) !important;
+    }
+
+    ::selection {
+        background: var(--pm-dorado);
+        color: var(--pm-blanco);
+    }
+
+    /* IDENTIDAD DEL ENCABEZADO */
+    .pm-header-brand {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.15;
+    }
+
+    .pm-header-name {
+        color: var(--pm-azul);
+        font-size: 1.05rem;
+        font-weight: 400;
+        letter-spacing: 0.24em;
+        white-space: nowrap;
+    }
+
+    .pm-header-subtitle {
+        color: var(--pm-dorado);
+        font-size: 0.56rem;
+        font-weight: 500;
+        letter-spacing: 0.27em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        margin-top: 0.28rem;
+    }
+
+    /* LOGO DE LA PORTADA */
+    .pm-hero-logo {
+        display: block;
+        width: min(470px, 88vw);
+        height: auto;
+        margin: 0 auto 0.5rem;
+        mix-blend-mode: multiply;
+    }
+
+    /* LOGO DEL PIE DE PÁGINA */
+    .pm-footer-logo {
+        display: block;
+        width: min(270px, 75vw);
+        height: auto;
+        mix-blend-mode: multiply;
+    }
+
+    footer a {
+        color: var(--pm-azul-secundario) !important;
+    }
+
+    footer a:hover {
+        color: var(--pm-dorado) !important;
+    }
+
+    /* ADAPTACIÓN PARA CELULARES */
+    @media (max-width: 767px) {
+
+        .pm-header-name {
+            font-size: 0.86rem;
+            letter-spacing: 0.16em;
+        }
+
+        .pm-header-subtitle {
+            font-size: 0.48rem;
+            letter-spacing: 0.17em;
+        }
+
+        .pm-hero-logo {
+            width: min(390px, 94vw);
+        }
+    }
+
+</style>
+
+<script id="pm-aplicar-identidad-visual">
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        /*
+        Nombre exacto de la imagen del logo.
+        El archivo debe llamarse:
+        logo-paola-munoz-web.png
+        */
+
+        const logoPath = 'logo-paola-munoz-web.png';
+
+        /* NOMBRE EN EL ENCABEZADO */
+        const headerBrand =
+            document.querySelector('header a[href="#inicio"]');
+
+        if (headerBrand) {
+
+            headerBrand.className = 'pm-header-brand';
+
+            headerBrand.innerHTML = `
+                <span class="pm-header-name">
+                    PAOLA MUÑOZ
+                </span>
+
+                <span class="pm-header-subtitle">
+                    Mediación Inmobiliaria
+                </span>
+            `;
+        }
+
+        /* LOGO EN LA PORTADA */
+        const heroContent =
+            document.querySelector('#inicio .max-w-5xl');
+
+        if (
+            heroContent &&
+            !document.querySelector('.pm-hero-logo')
+        ) {
+
+            const heroLogo =
+                document.createElement('img');
+
+            heroLogo.src = logoPath;
+
+            heroLogo.alt =
+                'Paola Muñoz - Mediación Inmobiliaria';
+
+            heroLogo.className =
+                'pm-hero-logo';
+
+            heroContent.prepend(heroLogo);
+        }
+
+        /* LOGO EN EL PIE DE PÁGINA */
+        const footerBrand =
+            document.querySelector(
+                'footer .max-w-6xl > div:first-child'
+            );
+
+        if (footerBrand) {
+
+            footerBrand.innerHTML = `
+                <img
+                    src="${logoPath}"
+                    alt="Paola Muñoz - Mediación Inmobiliaria"
+                    class="pm-footer-logo"
+                >
+            `;
+        }
+
+    });
+
+</script>
 </body>
 </html>
